@@ -1,38 +1,43 @@
-# Example Mod
+<div align="center">
+  <img src="./icon-rounded.png" alt="The DropConfirm Logo"/>
+  <h1>DropConfirm</h1>
+  <h3>Think twice before you drop.</h3>
+</div>
 
-Template for making Babric mods for BTA!
+---
 
-**Note: *DO NOT fork this repository unless you want to contribute!***
+## What *is* DropConfirm, exactly?
 
-## Prerequisites
-- JDK for Java 17 ([Eclipse Temurin](https://adoptium.net/temurin/releases/) recommended)
-- [Intellij IDEA](https://www.jetbrains.com/idea/download/) (Scroll down for the free community edition, if using linux **DO NOT** use the flatpak distribution)
-- Minecraft Development plugin (Optional, but highly recommended)
+DropConfirm is a **configurable quality-of-life mod** that adds a confirmation dialog when dropping items. I made it
+because I was tired of accidentally dropping my items to other players or into lava/voids.
 
-## Setup instructions
-   
+I use this mod personally, and I wanted to share it with others because I've noticed that a lot of my friends have had
+this exact problem (and I assume others have too).
 
-1. Click the `Use this template` button on this repo's page above (Will only appear if logged in). Choose `Create a new repository`, you will be redirected to a new page. Enter your repo's name and description, and hit `Create repository`.  
-   To get your project, open IntelliJ IDEA and click `Get from VCS`. Select `Repository URL` and enter your repo's url
+## Compatibility
 
-2. After the project has finished importing, close it and open it again.  
-   If that does not work, open the right sidebar with `Gradle` on it, open `Tasks` > `fabric` and run `ideaSyncTask`.
+DropConfirm currently supports Minecraft 1.20-1.21 (with a less featureful backport for 1.19.4).
 
-3. Create a new run configuration by going in `Run > Edit Configurations`.  
-   Then click on the plus icon and select Gradle. In the `Tasks and Arguments` field enter `build`.  
-   Running it will build your finished jar files and put them in `build/libs/`.
+Newer versions will likely be supported. Older versions may or may not work with some manual modifications to the source and will ***not*** be actively supported.
 
-4. Lastly, open `File` > `Settings` and head to `Build, Execution, Development` > `Build Tools` > `Gradle`.  
-   Make sure `Build and run using` and `Run tests using` is set to `Gradle`.
+## Roadmap
 
-5. Done! Now, all that's left is to change every mention of `examplemod` and `turniplabs` to your own mod id and mod group, respectively. Happy modding!
+- [x] Add configurations
+- [x] Add a command/keybind to toggle the mod
+- [x] Add sound events for toggling the mod and dropping items
+- [x] Add translations
+- [ ] Detect if the player is in a dangerous area (e.g. lava, void, etc.)
 
-## Tips
+## Configuration
 
-1. If you haven't already you should join the BTA modding discord! https://discord.gg/FTUNJhswBT
-2. You can set your username when launching the client run configuration by setting `--username <username>` in your program arguments.
-3. Set `online-mode` to `false` in order to be able to join your server!
-4. When launching the server run configuration you may want to remove the `nogui` program argument in order to see the regular server GUI.
-5. In Intellij you can double press shift or press ctrl+N to search class files, change the search from the default `Project Files` to `All Places` you can easily explore the classes for you dependencies and even BTA itself.
-6. In Intellij if ctrl+left click on a field or method you can quickly get information on when and where that field or method is assign or used.
-
+- **Enable:**
+    - Whether to enable DropConfirm.
+- **Play Sounds:**
+    - Whether or not to play sounds when doing various actions related to DropConfirm, e.g.:
+        - Enabling/Disabling
+        - Dropping items
+- **Reset Delay:**
+    - Amount of time (in seconds) before the confirmation status is reset.
+- **Blacklist**
+    - Allows for disabling the confirmation prompt on certain items.
+    - Can also be used like a whitelist instead.

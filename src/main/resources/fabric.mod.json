@@ -1,44 +1,39 @@
 {
-  "schemaVersion": 1,
-  "id": "examplemod",
-  "version": "${version}",
-
-  "name": "Example Mod",
-  "description": "This mod aims to help new BTA modders.",
-  "authors": [
-    "Turnip Labs"
-  ],
-  "contact": {
-    "homepage": "",
-    "sources": ""
-  },
-
+	"schemaVersion": 1,
+	"id": "drop_confirm",
+	"version": "${version}",
+	"name": "DropConfirm",
+	"description": "Think twice before you drop.",
+	"authors": [
+		"pupbrained"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/drop-confirm",
+		"issues": "https://github.com/pupbrained/drop-confirm/issues",
+		"sources": "https://github.com/pupbrained/drop-confirm"
+	},
 	"icon": "icon.png",
-  "license": "CC0-1.0",
-
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-			"turniplabs.examplemod.ExampleMod"
-    ],
+	"license": "Unlicense",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"xyz.pupbrained.DropConfirm"
+		],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"xyz.pupbrained.DropConfirm"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"xyz.pupbrained.DropConfirm"
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+			"xyz.pupbrained.DropConfirm"
 		]
 	},
-  "mixins": [
-      "examplemod.mixins.json"
-  ],
-
-  "depends": {
+	"mixins": [
+		"drop_confirm.mixins.json"
+	],
+	"depends": {
 		"minecraft": "^7.2-beta",
-    "fabricloader": ">=0.15.5"
-  },
-  "suggests": {
-  }
+		"fabricloader": ">=0.15.5"
+	}
 }
