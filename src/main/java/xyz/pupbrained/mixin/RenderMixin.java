@@ -26,17 +26,26 @@ public class RenderMixin {
 		long currentTime = System.currentTimeMillis();
 		long elapsedTime = currentTime - DropConfirmUtil.promptStartTime;
 
-		// Calculate alpha value based on elapsed time (fade out over 1000ms)
-		float alpha = 1.0f - (elapsedTime / 1000.0f); // Alpha decreases over time
-		if (alpha < 0.0f) {
-			alpha = 0.0f; // Ensure alpha doesn't go below 0
+		float alpha = 1.0f;
+
+		if (elapsedTime > 2000)
+			alpha = 1.0f - ((elapsedTime - 2000) / 500.0f);
+
+		// Make sure alpha doesn't go into negatives
+		alpha = Math.max(0.0f, alpha);
+
+		// Prevents flashing
+		if (alpha <= 0.01f) {
+			DropConfirmUtil.showConfirmationPrompt = false;
+			return;
 		}
 
-		// Convert alpha to a hex value (between 0 and 255) and incorporate it into the color
+		// Convert alpha to a hex value (between 0 and 255)
 		int alphaHex = (int) (alpha * 255) << 24;
-		int color = 0xFFFFFF | alphaHex; // Combine white color with alpha
 
-		// Weird GL stuff
+		// Add it to the RGB value
+		int color = alphaHex | 0xFFFFFF;
+
 		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glEnable(GL11.GL_BLEND); // Enable blending for alpha transparency
@@ -46,17 +55,11 @@ public class RenderMixin {
 			"Press Q again to drop this item.",
 			mc.resolution.scaledWidth / 2, // Complete center of the screen horizontally
 			mc.resolution.scaledHeight - 60, // A little above the hotbar
-			color // Color with alpha
+			color
 		);
 
-		// Undo weird GL stuff
 		GL11.glDisable(GL11.GL_BLEND); // Disable blending after rendering
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glPopMatrix();
-
-		// Stop showing the prompt after it has fully faded out
-		if (alpha == 0.0f) {
-			DropConfirmUtil.showConfirmationPrompt = false;
-		}
 	}
 }

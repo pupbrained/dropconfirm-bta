@@ -29,11 +29,10 @@ public class ItemDropMixin {
 
 			new Thread(() -> {
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 
 					synchronized (DropConfirmUtil.class) {
 						DropConfirmUtil.confirmed = false;
-						DropConfirmUtil.showConfirmationPrompt = false;
 					}
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
